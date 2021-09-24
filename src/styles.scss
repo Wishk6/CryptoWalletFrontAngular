@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    font-family: DejaVu Sans Mono, monospace;
+    font-weight: bolder;
+}
+
+:root {
+--elem : rgb(255, 166, 1);
+--elemBackground : grey;
+--text : white;
+--text2 : black;
+--hover : #ffd902;
+--background : #2a2a2a;
+
+}
+
+body {
+    margin: 0;
+    width:100%;
+    padding-top: 1%;
+    background-color:rgb(42, 42, 42);
+    font-size: 0.9vw;
+}

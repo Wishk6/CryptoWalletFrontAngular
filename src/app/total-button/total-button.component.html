@@ -1,0 +1,17 @@
+<div class="btnComponentWrapper">
+        <button (click)="launchSumInHeader()" class="bn31">
+            <span class="bn31span">{{trainingFunc() }}</span>
+        </button>
+    <div *ngIf=" updated == false" class="total"> {{ newSum !='0' ? newSum : ' '}}</div>
+</div>
+
+<div class="theme-switch-wrapper">
+    <em><app-sun-svg></app-sun-svg></em>
+    <label class="theme-switch" for="checkbox">
+        <input type="checkbox" (click)="darkModeHandler()" id="checkbox" checked/>
+        <div class="slider round"></div>
+  </label>
+  <em><app-moon-svg></app-moon-svg></em>
+  
+</div>
+

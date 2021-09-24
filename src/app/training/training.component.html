@@ -1,0 +1,36 @@
+<form class="form">
+    <div class="card-body">
+        <div class="form-group">
+            <label>Full Name:</label>
+            <input type="email" class="form-control form-control-solid" placeholder="Enter full name" name="updated"
+                [(ngModel)]="update.firstname" />
+        </div>
+
+    </div>
+
+
+
+    <div class="form-group row">
+        <div class="col-lg-4 col-md-9 col-sm-12">
+            <div class="dropdown bootstrap-select form-control">
+                <select class="form-control selectpicker" name="updated" [(ngModel)]="update.gender">
+                    <option [value]="item" *ngFor="let item of genders">{{item}}</option>
+
+
+                </select>
+
+                <div class="dropdown-menu ">
+                    <div class="inner show" role="listbox" id="bs-select-1" tabindex="-1">
+                        <ul class="dropdown-menu inner show" role="presentation"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-footer">
+        <button type="reset" (click)='testUpdate()' class="btn btn-primary mr-2">Submit</button>
+        <button type="reset" class="btn btn-secondary">Cancel</button>
+    </div>
+</form>
