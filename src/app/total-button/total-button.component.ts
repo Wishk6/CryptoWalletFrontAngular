@@ -9,15 +9,13 @@ export class TotalButtonComponent implements OnInit {
   newSum = '0';
   showOrHide = "Show your theoric wallet value";
   updated = true;
-  actualMode = "Dark Mode";
-  checkDark = true;
   @Input() sum: any;
-  r = document.querySelector(':root');
+
   constructor() { }
 
   ngOnInit(): void {
   }
-  trainingFunc() {
+  waitingFunc() {
     if (this.sum != undefined) {
       return this.showOrHide;
     } else {
@@ -25,17 +23,10 @@ export class TotalButtonComponent implements OnInit {
     }
   }
 
-  darkModeHandler() {
-  
-  
-  // this.r.style.setProperty('--color', 'red');
 
+  showSumInHeader() {
 
-  }
-
-  launchSumInHeader() {
-    
-    this.sum != null ? this.newSum = this.sum.toString() + " $" : console.log("wait data to be loaded");
+    this.sum != null ? this.newSum = this.sum.toString() + " $" : console.log("wait data to be loaded");  
     if (this.updated == true) {
       this.showOrHide = "Hide your theoric wallet value";
       this.updated = false;

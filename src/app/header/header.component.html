@@ -1,0 +1,11 @@
+<div class="topnav">
+    <a routerLink="/" routerLinkActive="router-link-active">Menu</a>
+    <a routerLink="/data" routerLinkActive="router-link-active" (click)="dataFunc()" *ngIf="userConnected">Data Grid</a>
+    <div class="login-container">
+      <form class="input">
+        <input type="text" placeholder="Identifiant" name="username">
+        <input type="password" autocomplete="current-password" placeholder="Mot de passe" name="psw">
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>

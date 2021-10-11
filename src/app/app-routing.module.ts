@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
 import { ShowApiComponent } from './show-api/show-api.component';
-import { TrainingComponent } from './training/training.component';
+import { UserTestComponent } from './view/user-test/user-test.component';
 
 const routes: Routes = [{
   path: '',
-  component: ShowApiComponent
+  component: UserTestComponent
 },
 
 {
-  path: 'training',
-  component: TrainingComponent
+  path: 'data',
+  component: ShowApiComponent
 }
 ];
 

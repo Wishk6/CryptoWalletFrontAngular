@@ -12,9 +12,9 @@ export class ShowApiComponent implements OnInit {
   cryptoObj: any;
   lis: any[] = [];
   data: any;  //  à changer
-  trading = 300;
+  trading = 320;
   dollars = 0;
-
+  
   constructor(private http: HttpClient) {
   }
   //fait la somme des pnl et des valeurs en dur
@@ -22,25 +22,28 @@ export class ShowApiComponent implements OnInit {
     let sum = this.trading + this.dollars;
     (this.cryptoObj != null ?
       this.cryptoObj.forEach((element: any) => {
-        sum += element.TheoricPnl + element.InvestInDollars;
+        sum += parseInt(element.theoricPnl) + parseInt(element.investInDollars);
       }
       ) : console.log("wait"));
     this.data = Math.round(sum);
   }
+
+//Loading... handler
+  hideloader() {
+    let dataLoaded = document.getElementById('loading');
+    dataLoaded != null ? dataLoaded.style.display = 'none' : 'errorHiding';
+  }
+
+
   ngOnInit(): void {
-    this.http.post<any>('http://localhost:3000/api/v1/cryptoPrice', {}) // arg vide 
+ 
+    this.http.post<any>('http://localhost:3000/api/v1/cryptoData', {}) // arg vide 
       .subscribe(Response => {
         if (Response) {
-          hideloader();
+          this.hideloader();
+          this.cryptoObj = Response;
+          this.sumTheoric();
         }
-        this.cryptoObj = Response;
-        this.sumTheoric();
       });
-
-    // cache le "loading" function visible par tous 
-    function hideloader() {
-      let dataLoaded = document.getElementById('loading');
-      dataLoaded != null ? dataLoaded.style.display = 'none' : 'errorHiding';
-    }
   }
 }

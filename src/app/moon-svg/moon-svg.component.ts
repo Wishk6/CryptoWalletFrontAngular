@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./moon-svg.component.scss']
 })
 export class MoonSvgComponent implements OnInit {
-
+moonLight = "#ffA601";
   constructor() { }
 
   ngOnInit(): void {
   }
+
+checkIfDark() {
+
+
+  
+}
 
 }

@@ -1,23 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
-* {
-    font-family: DejaVu Sans Mono, monospace;
-    font-weight: bolder;
-}
 
 :root {
---elem : rgb(255, 166, 1);
---elemBackground : grey;
---text : white;
---text2 : black;
---hover : #ffd902;
---background : #2a2a2a;
-
+--elem : rgb(77 89 149 / 6%);
+--linear : linear-gradient(to right, var(--price1) 0%, var(--text) 100%);
+--elemBackground : white;
+--text : #3082d3;
+--header : white;
+--shadow: #7b7979;
+--text2 : #fbfbfb;
+--background : white;
+--title : #383737;
+--buttonHover2 : #3699FF;
+--button: #E1F0FF;
+--price1 : #a9da2e;
+--price2:#ff771d;
+--border : #cfcfcf;
+transition: .4s;
 }
 
 body {
+    transition: background 0.5s;
+    font-family: Poppins, Helvetica, "sans-serif";
     margin: 0;
     width:100%;
-    padding-top: 1%;
-    background-color:rgb(42, 42, 42);
-    font-size: 0.9vw;
+    background-color:var(--elem);
+    font-size: 0.7vw;
+
 }

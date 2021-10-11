@@ -5,23 +5,25 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TitleComponent } from './title/title.component';
 import { ShowApiComponent } from './show-api/show-api.component';
-import { TrainingComponent } from './training/training.component';
 import { TotalButtonComponent } from './total-button/total-button.component';
 import { MoonSvgComponent } from './moon-svg/moon-svg.component';
 import { SunSvgComponent } from './sun-svg/sun-svg.component';
+import { HeaderComponent } from './header/header.component';
+import { ThemeswitchComponent } from './themeswitch/themeswitch.component';
+import { UserTestComponent } from './view/user-test/user-test.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TitleComponent,
     ShowApiComponent,
-    TrainingComponent,
     TotalButtonComponent,
     MoonSvgComponent,
     SunSvgComponent,
+    HeaderComponent,
+    ThemeswitchComponent,
+    UserTestComponent,
 
   ],
   imports: [
