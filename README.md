@@ -11,8 +11,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 
-// Liste à faire 
+<h1>// Liste à faire</h1> 
 
-Faire user identification
-Réorga' compoenent et service
-Faire update if prix à changer 
+<h2>Faire user identification</h2>
+<h2>Réorga' component et service</h2>
+<h2>Faire update if prix à changer</h2>
