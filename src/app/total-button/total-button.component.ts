@@ -28,10 +28,10 @@ export class TotalButtonComponent implements OnInit {
 
     this.sum != null ? this.newSum = this.sum.toString() + " $" : console.log("wait data to be loaded");  
     if (this.updated == true) {
-      this.showOrHide = "Hide your theoric wallet value";
+      this.showOrHide = " Hide your theoric wallet value";
       this.updated = false;
     } else {
-      this.showOrHide = "Show your theoric wallet value";
+      this.showOrHide = " Show your theoric wallet value";
       this.updated = true;
     }
   }

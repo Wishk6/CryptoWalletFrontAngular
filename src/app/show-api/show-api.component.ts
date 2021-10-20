@@ -10,40 +10,53 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ShowApiComponent implements OnInit {
   cryptoObj: any;
-  lis: any[] = [];
   data: any;  //  à changer
   trading = 320;
-  dollars = 0;
-  
+  dollars = 641;
+  sum: any;
+
   constructor(private http: HttpClient) {
   }
   //fait la somme des pnl et des valeurs en dur
   sumTheoric() {
     let sum = this.trading + this.dollars;
-    (this.cryptoObj != null ?
+    this.cryptoObj != null ?
       this.cryptoObj.forEach((element: any) => {
         sum += parseInt(element.theoricPnl) + parseInt(element.investInDollars);
       }
-      ) : console.log("wait"));
+      ) : console.log("wait");
     this.data = Math.round(sum);
   }
 
-//Loading... handler
+  //Loading... handler
   hideloader() {
     let dataLoaded = document.getElementById('loading');
-    dataLoaded != null ? dataLoaded.style.display = 'none' : 'errorHiding';
+    dataLoaded != null ? dataLoaded.style.display = 'none' : 'flex';
   }
+  //get cryptoData
+ getCryptoData() {
 
-
-  ngOnInit(): void {
- 
-    this.http.post<any>('http://localhost:3000/api/v1/cryptoData', {}) // arg vide 
+    this.http.post<any>('http://localhost:3000/api/v1/cryptoData', {})
       .subscribe(Response => {
         if (Response) {
-          this.hideloader();
           this.cryptoObj = Response;
           this.sumTheoric();
+          this.hideloader();
+         
+        } else {
+          console.log('"error get')
         }
-      });
+      })
+  }
+
+  ngOnInit(): any {
+  //  this.getCryptoData();
+    this.http.post<any>('http://localhost:3000/api/v1/cryptoData/update', {})
+    .subscribe(Response => {
+      if (Response) {
+        this.getCryptoData();
+      }
+    })
   }
 }
+

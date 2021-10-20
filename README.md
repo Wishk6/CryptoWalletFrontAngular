@@ -12,7 +12,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 
 <h1>// Liste à faire</h1> 
-
+<h1> Faire update db Crypto </h1>
 <h2>Faire user identification</h2>
 <h2>Réorga' component et service</h2>
 <h2>Faire update if prix à changer</h2>

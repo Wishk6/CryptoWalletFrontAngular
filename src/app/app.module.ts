@@ -12,6 +12,7 @@ import { SunSvgComponent } from './sun-svg/sun-svg.component';
 import { HeaderComponent } from './header/header.component';
 import { ThemeswitchComponent } from './themeswitch/themeswitch.component';
 import { UserTestComponent } from './view/user-test/user-test.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { UserTestComponent } from './view/user-test/user-test.component';
     HeaderComponent,
     ThemeswitchComponent,
     UserTestComponent,
+    AlertComponent,
 
   ],
   imports: [

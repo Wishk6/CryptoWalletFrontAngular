@@ -17,7 +17,7 @@ export class ThemeswitchComponent implements OnInit {
       document.documentElement.style.setProperty('--elem', '#1e1e2d');//start
       document.documentElement.style.setProperty('--header', '#1e1e2d');
       document.documentElement.style.setProperty('--elemBackground', '#2c3759');
-      document.documentElement.style.setProperty('--shadow', '#3082d3');
+      document.documentElement.style.setProperty('--shadow', '#2c3759');
       document.documentElement.style.setProperty('--title', 'white');
        this.i++;
     } else {

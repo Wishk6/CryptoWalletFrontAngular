@@ -1,0 +1,121 @@
+.floating.alertsContainer {
+    background-color: transparent !important;
+    position: fixed;
+    top: 100px;
+    right: 0;
+    max-width: 35%;
+    min-width: 25%;
+    z-index: 99998;
+  }
+  
+  .left-icon-box {
+    min-width: 35px;
+    width: 35px;
+    min-height: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    border-radius: 6px;
+  
+  }
+  
+  .floating.alertsContainer .text-alert-c .left-content-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+    border-radius: 6px;
+  
+    background-color: var(--over-background) !important;
+  }
+  
+  .floating.alertsContainer .text-alert-c .icon-type {
+    color: var(--over-background) !important;
+    font-size: 28px;
+  }
+  
+  .floating.alertsContainer .text-alert-c {
+    background-color: var(--over-background) !important;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    animation: slideInAlert 1s ease-out;
+    /* padding: 14px; */
+  }
+  
+  
+  
+  
+  .alertSubContainer {
+    animation: slideInAlert 0.8s ease-out;
+    border-radius: 20px;
+  /* box-shadow: 0px 0px 8px 0px #000000; */
+  
+    min-height: 39px;
+  }
+  
+  .customAlert {
+    margin: 5px 0px;
+    border-radius: 20px;
+    /* animation: fadeInAlert 0.8s ease-out; */
+  }
+  
+  .floating.alertsContainer .text-alert-c .icon {
+    cursor: pointer;
+    background-color: transparent !important;
+    font-size: 17px;
+    margin-right: 10px;
+  }
+  
+  .floating.alertsContainer .text-alert-c span {
+    background-color: transparent !important;
+    font-size: 15px;
+  }
+  
+  .floating.alert-success,
+  .floating.alert-success * {
+    background-color: #4fea61 !important;
+    color: #fff !important;
+  }
+  
+  .floating.alert-warning,
+  .floating.alert-warning * {
+    background-color: #ffa800 !important;
+    color: #fff  !important;
+  }
+  
+  .floating.alert-danger,
+  .floating.alert-danger * {
+    background-color: #f64e60 !important;
+    color: #fff  !important;
+  }
+  
+  .floating.alert-info,
+  .floating.alert-info * {
+    background-color: #8950fc !important;
+    color: #fff !important;
+  }
+  
+  @keyframes fadeInAlert {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInAlert {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }

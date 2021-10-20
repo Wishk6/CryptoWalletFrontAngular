@@ -3,7 +3,7 @@
 content: "Loading";
     display: flex;
     font-size: 250%;
-    color: var(--elem);
+    color: var(--title);
     padding-left: 43.5%;
     padding-top: 6%;
 }
@@ -34,14 +34,6 @@ span::after {
     flex-direction: row-reverse;
     justify-content: space-between;
 } 
-
-app-themeswitch {
-    display:flex;
-}
-app-total-button {
-
-    margin-left:1%;
-}
 
 //GRID
 .wrapper {
