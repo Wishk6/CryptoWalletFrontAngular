@@ -14,3 +14,4 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 <h1>// Liste à faire</h1> 
 <h2>Réorga' component et service</h2>
 <h2>Ajouter la possibilité d'ajouter une crypto à notre wallet</h2>
+<h2>Ajouter la possibilité de s'enregistrer et refaire les alerts </h2>
