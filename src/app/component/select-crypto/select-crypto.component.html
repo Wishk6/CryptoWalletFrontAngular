@@ -1,0 +1,10 @@
+<label for="cars">Add a crypto to your list</label>
+  <select name="cars" id="cars">
+    <option *ngFor="let name of cryptoAvailable" 
+    [value]="name" 
+    >
+  {{name}}
+</option>
+  </select>
+  <br><br>
+  <input type="submit" value="Submit">

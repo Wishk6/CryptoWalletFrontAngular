@@ -1,0 +1,100 @@
+/* Media Queries: Tablet Landscape */
+@media screen and (max-width: 1060px) {
+  #primary { width:67%; }
+  #secondary { width:30%; margin-left:3%;}  
+}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+  #primary { width:100%; }
+  #secondary { width:100%; margin:0; border:none; }
+}
+
+
+/* Style the navbar */
+.topnav {
+  transition: background 0.5s;
+  overflow: hidden;
+  height:3.3vw;
+  align-items: center;
+  box-shadow: 0vw -1vw 1vw 1vw var(--shadow);
+  display:flex;
+  padding-left: 2vw;
+  justify-content: space-between; 
+  background-color: var(--header);
+}
+
+/* Navbar links */
+.topnav a {
+  color: var(--title);
+
+  display: flex;
+  border-radius: 0.5vw;
+  width: 6vw;
+  height: 2vw;
+  text-decoration: none;
+  font-size: 1.1vw;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navbar links on mouse-over */
+.topnav a:hover {
+  background-color: var(--elem);
+  color:var(--text);
+}
+
+/* Active/current link */
+.topnav a.active {
+  background-color:var(--elem);
+  color: white;
+}
+
+
+/* Style the input field inside the navbar */
+.topnav input[type=text], input[type=password] {
+  border-radius: 0.5vw;
+  font-size: 1vw;
+  border: solid 0.1vw var(--border);
+  width: 25%; 
+}
+
+/* Style the button inside the input container */
+.topnav .login-container button {
+  max-width:11vw;
+  min-width:9vw;
+  border-radius:0.5vw;
+  background: var(--button);
+  color: var(--text);
+  font-size: 1vw;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .login-container button:hover {
+  color:var(--text2);
+  background: var(--buttonHover2);
+}
+
+.input {
+  display:flex;
+  height:2vw;
+  margin-top:1.8%;
+  justify-content: space-evenly;
+}
+
+
+.disconnect {
+  height: 1.7vw;
+  margin-left: -8%;
+}
+
+
+.Disabled{
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

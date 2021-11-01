@@ -11,7 +11,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 
-<h1>// Liste à faire</h1> 
+<h1>// Liste FAIT </h1> 
 <h2>Réorga' component et service</h2>
+<h2>Ajouter la possibilité de se connecter, ajouter cookie et alert  </h2>
+<br></br>
+<h1>// Liste AFAIRE  </h1> 
 <h2>Ajouter la possibilité d'ajouter une crypto à notre wallet</h2>
-<h2>Ajouter la possibilité de s'enregistrer et refaire les alerts </h2>
+<h2>Ajouter la possibilité de s'enregistrer</h2>
+<h2>Gérer le darkmode dans la db</h2>
