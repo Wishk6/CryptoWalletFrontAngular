@@ -1,40 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
-:root {
-    --elem: rgb(77 89 149 / 6%);
-    --linear: linear-gradient(to right, var(--price1) 0%, var(--text) 100%);
-    --elemBackground: white;
-    --text: #4592de;
-    --header: white;
-    --shadow: #7b7979;
-    --text2: #fbfbfb;
-    --title: #383737;
-    --buttonHover2: #3699FF;
-    --button: #E1F0FF;
-    --priceUp: #4dc038;
-    --priceDown: #ff771d;
-    --border: #4592e16b;
-    --footer: #69b6ed;
-    --boxTitleColor: #8bcddf;
-    --boxGridColor: #00ffbfb5;
-    --dailyChange: #dddddd;
-
-
-}
-
-body {
-    position: relative;
-    font-family: Poppins, Helvetica, "sans-serif";
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
-    font-size: 21px;
-    background-color: var(--elem);
-
-}
-
-
-
+/* part 2  reload Button  and media queries */ 
 @keyframes rotate360 {
     to {
         transform: rotate(-360deg);
@@ -91,9 +55,9 @@ body {
 
     .gridWrapper {
         grid-gap: 1%;
-        font-size: 13px;
+        font-size: 11px;
         display: grid;
-        grid-template-columns: 26% 24% 33% 4%;
+        grid-template-columns: 28% 24% 31% 5%;
     }
 
     .gridTitleWrapper {
@@ -101,7 +65,7 @@ body {
         display: grid;
         justify-content: center;
         font-size: 15px;
-        grid-template-columns: 26% 24% 33% 4%;
+        grid-template-columns: 28% 24% 31% 5%;
     }
 
     .box {
@@ -116,4 +80,3 @@ body {
         margin-top: 4%;
     }
 }
-

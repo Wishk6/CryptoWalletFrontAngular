@@ -1,61 +1,128 @@
+<div class='dataGridWrapper'>
 
-    <div class="baseWrapper" >
+    <div class="gridTopButtons">
+        <app-total-button [sum]="sum">
+        </app-total-button>
 
-        <div class="box-border">
-            <div class="box columnTitle">Position</div>
+
+        <span class="selectWrapper">
+            <button (click)="openSelect()">Add a crypto to your list</button>
+
+            <div class="selectInputWrapper" *ngIf="open">
+                <select [(ngModel)]="cryptoName">
+                    <option *ngFor="let name of cryptoAvailable" [value]="name">{{name}}</option>
+                </select>
+
+                <input type="text" placeholder="Quantity In Crypto" [(ngModel)]='cryptoQt'>
+                <input type="text" placeholder="Quantity In Dollars" [(ngModel)]='dols'>
+
+                <button type="submit" value="Submit" (click)="addCrypto()">Add</button>
+            </div>
+        </span>
+
+        <button type="submit" [ngClass]="inUpdate ? 'reloadButtonActive' : 'reloadButton'" (click)="updateData()">
+            <span>
+                <svg class="reloadSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <path class="reloadColor" d="M8.43296491,7.17429118 L9.40782327,7.85689436 C9.49616631,7.91875282 9.56214077,8.00751728 9.5959027,
+                        8.10994332 C9.68235021,8.37220548 9.53982427,8.65489052 9.27756211,8.74133803 L5.89079566,9.85769242 C5.84469033,
+                        9.87288977 5.79661753,9.8812917 5.74809064,9.88263369 C5.4720538,9.8902674 5.24209339,9.67268366 5.23445968,
+                        9.39664682 L5.13610134,5.83998177 C5.13313425,5.73269078 5.16477113,5.62729274 5.22633424,5.53937151 C5.384723,
+                        5.31316892 5.69649589,5.25819495 5.92269848,5.4165837 L6.72910242,5.98123382 C8.16546398,4.72182424 10.0239806,
+                        4 12,4 C16.418278,4 20,7.581722 20,12 C20,16.418278 16.418278,20 12,20 C7.581722,20 4,16.418278 4,12 L6,12 C6,
+                        15.3137085 8.6862915,18 12,18 C15.3137085,18 18,15.3137085 18,12 C18,8.6862915 15.3137085,6 12,6 C10.6885336,
+                        6 9.44767246,6.42282109 8.43296491,7.17429118 Z" fill="#000000" fill-rule="nonzero" />
+                    </g>
+                </svg>
+            </span>
+            Update Data
+        </button>
+    </div>
+
+    <div class="gridTitleWrapper">
+
+        <div class="box-border hideSmallScreen">
+            <div class="box">Position</div>
         </div>
 
         <div class="box-border">
-            <div class="box columnTitle">Name </div>
+            <div class="box">Name </div>
+        </div>
+
+        <div class="box-border hideSmallScreen">
+            <div class="box">Price</div>
+        </div>
+
+        <div class="box-border ">
+            <div class="box">DailyChange</div>
+        </div>
+
+        <div class="box-border hideSmallScreen">
+            <div class="box">MarketCap</div>
+        </div>
+
+        <div class="box-border hideSmallScreen">
+            <div class="box">24hVolume</div>
+        </div>
+
+        <div class="box-border hideSmallScreen">
+            <div class="box">CirculatingSupply</div>
+        </div>
+
+        <div class="box-border hideSmallScreen">
+            <div class="box">Invested</div>
         </div>
 
         <div class="box-border">
-            <div class="box columnTitle">Price</div>
-        </div>
-
-        <div class="box-border">
-            <div class="box columnTitle">DailyChange</div>
-        </div>
-
-        <div class="box-border">
-            <div class="box columnTitle">MarketCap</div>
-        </div>
-
-        <div class="box-border">
-            <div class="box columnTitle">24hVolume</div>
-        </div>
-
-        <div class="box-border">
-            <div class="box columnTitle">CirculatingSupply</div>
-        </div>
-
-        <div class="box-border">
-            <div class="box columnTitle">Invested</div>
-        </div>
-
-        <div class="box-border">
-            <div class="box columnTitle">Theoric Pnl</div>
+            <div class="box">Theoric Pnl</div>
         </div>
 
     </div>
 
     <div>
         <div role="status">
-            <span class="loadingElem" id="loading">Loading</span>
+            <span class="loadingElem" *ngIf="cryptoObj == undefined">Loading</span>
         </div>
     </div>
 
-    <div *ngFor="let data of cryptoObj;">
-        <div class="wrapper">
-            <div class="box ">{{ data.position }}</div>
+    <div *ngFor="let data of cryptoObj; let i = index">
+        <div class="gridWrapper">
+            <div class="boxGrid hideSmallScreen">{{ data.position }}</div>
             <a class="box2" href="https://coinmarketcap.com/currencies/{{data.name}}/" target="_blank">{{
                 data.name}}</a>
-            <div class="box ">{{ data.price }}</div>
+            <div class="boxGrid hideSmallScreen">{{ data.price.substring(1) }} $</div>
             <div [ngClass]=" data.dailyChange[0] =='-'  ? 'box3' : 'box4' ">{{ data.dailyChange.substring(1) }}</div>
-            <div class="box ">{{ data.marketCap }}</div>
-            <div class="box ">{{ data.volume }}</div>
-            <div class="box ">{{ data.circuSupply }}</div>
-            <div class="box ">{{ data.investInCrypto }} for {{ data.investInDollars }} $</div>
+            <!-- red if neg greeen if not -->
+            <div class="boxGrid hideSmallScreen">{{ data.marketCap.substring(1) }} $</div>
+            <div class="boxGrid hideSmallScreen">{{ data.volume.substring(1) }} $</div>
+            <div class="boxGrid hideSmallScreen">{{ data.circuSupply }}</div>
+            <div class="boxGrid hideSmallScreen">{{ data.investInCrypto }} for {{ data.investInDollars }} $</div>
             <div class="box2" style="font-weight: bolder;"> {{ data.theoricPnl }} $</div>
+            <a class="boxGrid " (click)="deleteData(i)">
+                <!-- take i in parameter to delete the good lign  -->
+
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px"
+                        height="20px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <path class="svg" d="M6,8 L18,8 L17.106535,19.6150447 C17.04642,20.3965405 16.3947578,21 15.6109533,21 L8.38904671,
+                            21 C7.60524225,21 6.95358004,20.3965405 6.89346498,19.6150447 L6,8 Z M8,10 L8.45438229,
+                            14.0894406 L15.5517885,14.0339036 L16,10 L8,10 Z" />
+                            <path class="svg"
+                                d="M14,4.5 L14,3.5 C14,3.22385763 13.7761424,3 13.5,3 L10.5,3 C10.2238576,3 10,3.22385763 10,3.5 L10,
+                            4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,
+                            6 C18.7761424, 6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z"
+                                opacity="0.3" />
+                        </g>
+                    </svg>
+
+                </div>
+            </a>
         </div>
     </div>
+
+
+</div>

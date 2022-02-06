@@ -1,8 +1,8 @@
-<div class="subHeader">
+
   <div class="theme-switch-wrapper">
     <em>
       <span>
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1.5vw" height="1.5vw"
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px"
           viewBox="0 0 24 24" version="1.1">
           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <rect x="0" y="0" width="1vw" height="1vw" />
@@ -17,12 +17,12 @@
     </em>
     <label class="theme-switch" for="checkbox">
       <!-- <input type="checkbox" (click)="darkModeHandler()" id="checkbox" [checked]="darkModeHandler()"/> -->
-      <input type="checkbox" (click)="darkModeHandler()" id="checkbox" />
+      <input type="checkbox" (click)="changeUserMode()" id="checkbox" [checked]="this.theme==0" />
       <div class="slider round"></div>
     </label>
     <em>
-      <span class="svg-icon svg-icon-primary svg-icon-2x">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1.5vw" height="1.5vw"
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="22px"
           viewBox="0 0 24 24" version="1.1">
           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <rect x="0" y="0" width="1vw" height="1vw" />
@@ -33,4 +33,3 @@
       </span>
     </em>
   </div>
-</div>

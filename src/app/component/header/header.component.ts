@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
 import { NotificationService } from 'src/app/service/notification.service';
-import { CookieService } from 'ngx-cookie-service';
+import { CryptodataService } from 'src/app/service/cryptodata.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,52 +10,116 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
   email: any;
   mdp: any;
-  @Input() userConnected: any;
-  constructor(private userService: UserService, private notificationService: NotificationService, private cookieService: CookieService) { } // alert services in header 
+  pseudo: any;
+  exist: any = false;
+  newEmail: any;
+  newPassword: any;
+  newNickname: any;
+  @Output() connectionEvent = new EventEmitter<string>();
+  userConnected: any;
+  modalClicked: any;
+  dataPath : any = false;
+
+  constructor(private userService: UserService, private notificationService: NotificationService, private dataService: CryptodataService, private router : Router) { } // alert services in header 
 
 
-  ngOnInit(): void {
-    this.checkCookie();
+  async ngOnInit(): Promise<void> {
+    
+    this.router.url.includes("data") ? this.dataPath = true : this.dataPath = false; //check actual path 
+
+    this.pseudo = await sessionStorage.getItem('pseudo');
+    sessionStorage.getItem('connected') !== null ? this.userConnected = this.userConnected = true : this.userConnected = false;
+
   }
 
-  checkCookie() {
-    this.cookieService.get('userConnected') == 'true' ? this.userConnected = true : this.userConnected = false;
-  }
 
   async signInFunc() {
+
     await this.userService.loginUser({ email: this.email, mdp: this.mdp })
+
       .subscribe((res) => {
+
+        sessionStorage.setItem('connected', 'yes');
+        sessionStorage.setItem('email', res[0].email);
+        sessionStorage.setItem('pseudo', res[0].pseudo);
+        sessionStorage.setItem('id', res[0].id);
         this.userConnected = true;
-        this.cookieService.set("userConnected", 'true');
-       this.notificationService.showSuccess('Hello ' + res[0].pseudo);
+        this.connectionEvent.emit(res[0]);
+        this.pseudo = res[0].pseudo;
+
+        this.notificationService.showSuccess('Hello ' + this.pseudo);
+
       }, err => {
-       this.notificationService.showError('Please retry identification');
+        console.log(err.error,"test");
+        this.notificationService.showError('Please retry identification');
+
       });
   }
 
   signOutFunc() {
+
+    sessionStorage.clear();
+    this.connectionEvent.emit("disconnected");
     this.userConnected = false;
-    this.cookieService.set("userConnected", 'false');
     this.notificationService.showInfo("Bye Bye");
+
   }
 
-  signUpFunc() {
-    //   this.http.post<any>('http://localhost:3000/api/v1/user', {})
-    //     .subscribe((response) => {
-    //       if (response) {
-    //         (response[0].email);
-
-    //         this.http.post<any>('http://localhost:3000/api/v1/user/insert', { email: this.email, mdp: this.mdp })
-    //           .subscribe((response) => {
-    //             if (response) {
-    //               console.log(response[0].pseudo);
-    //             }
-    //           }, err => console.log(err)
-    //           );
-    //       }
-    //     }, err => console.log(err)
-    //     );
+  testUsers() {
+      
+    if (this.newEmail != undefined && this.newPassword != undefined && this.newNickname != undefined) {
+      this.userService.getUser({  //test if pseudo already exist 
+        "only": ["email"]
+      })
+        .subscribe((res) => {
+          for (let i = 0; i < res.length; i++) {
+            if (res[i].email == this.newEmail) {
+              this.notificationService.showError("This Username is already used.");
+              this.exist = true;
+              i = res.length - 1;
+            } else {
+              this.exist = false;
+            }
+          }
+          this.signUpFunc(); // exec sign in after setting exist 
+        }, (err => {
+          console.log(err.error);
+        })
+        );
+    } else { // if emptyy 
+      this.notificationService.showWarning("Enter correct values.");
+      this.exist = true;
+    }
   }
+
+  async signUpFunc() {
+
+    if (!this.exist) {
+      this.userService.insertUser({ email: this.newEmail, pseudo: this.newNickname, mdp: this.newPassword })
+        .subscribe(() => {
+          this.notificationService.showInfo("Welcome " + this.newNickname);
+          this.email = this.newEmail;
+          this.mdp = this.newPassword;
+          this.closeModal();
+          this.signInFunc();
+        }, (err) => {
+          console.log(err.error);
+        });
+    }
+  }
+
+
+  openModal() {
+
+    this.modalClicked = true;
+  }
+
+  closeModal() {
+    this.modalClicked = false;
+  }
+
+  
 }

@@ -1,19 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
+  
 })
 export class MenuComponent implements OnInit {
 
-  userConnected: any;
-  user : any;
+  connect: any;
+  @Input() clicked = false; // à faire 
+
   constructor() { }
 
-  async ngOnInit() {
-    //  this.user = await this.objectUser.getItem({}).toPromise( );
+  ngOnInit() {
 
+    this.connect = sessionStorage.getItem('connected');
   }
+
+  updateUserConnected(data: any) {
+
+    data != "disconnected" ? this.connect = true : this.connect = false;
+  }
+
+  toggleInfoBubble(div: any) {
+
+    this.clicked = !this.clicked;
+    this.clicked ? div.className = "informationText" : div.className = "informationTextHidden";
+  }
+
 }

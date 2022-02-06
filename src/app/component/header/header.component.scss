@@ -1,100 +1,253 @@
-/* Media Queries: Tablet Landscape */
-@media screen and (max-width: 1060px) {
-  #primary { width:67%; }
-  #secondary { width:30%; margin-left:3%;}  
-}
-
-/* Media Queries: Tabled Portrait */
-@media screen and (max-width: 768px) {
-  #primary { width:100%; }
-  #secondary { width:100%; margin:0; border:none; }
-}
-
-
-/* Style the navbar */
+// wrapper 
 .topnav {
-  transition: background 0.5s;
+  width: 100%;
   overflow: hidden;
-  height:3.3vw;
-  align-items: center;
   box-shadow: 0vw -1vw 1vw 1vw var(--shadow);
-  display:flex;
-  padding-left: 2vw;
-  justify-content: space-between; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: var(--header);
+
 }
 
-/* Navbar links */
-.topnav a {
-  color: var(--title);
-
+/*Title*/
+.title {
   display: flex;
-  border-radius: 0.5vw;
-  width: 6vw;
-  height: 2vw;
+  margin-left: 2%;
+  flex-direction: column;
+}
+
+span {
+  /* title Color */
+  font-weight: bold;
+  background: -webkit-linear-gradient(130deg, #ff7a18, #af002d 41.07%, #319197 76.05%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* links class */
+.default {
+  margin: 1%;
+  font-size: 22px;
+  width: 115px;
+  display: flex;
+  justify-content: center;
+  height: 1.7rem;
+  color: var(--title);
+  border-radius: 3px;
   text-decoration: none;
-  font-size: 1.1vw;
+  transition: color 0.3s ease-out, background 0.3s ease;
+}
+
+.default:hover {
+  background-color: var(--button);
+  color: var(--text);
+}
+
+.clicked {
+  margin: 1%;
+  font-size: 22px;
+  width: 115px;
+  display: flex;
+  justify-content: center;
+  height: 1.7rem;
+  background-color: var(--button);
+  color: var(--text);
+  border-radius: 3px;
+  text-decoration: none;
+
+}
+
+/* inputs and buttons */
+.topnav-2 {
+  display: flex;
   align-items: center;
+
+}
+
+.inputWrapper {
+  display: flex;
+  gap: 5px;
+  margin-left: -3%;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 5px;
+  margin-left: 1%;
   justify-content: center;
 }
 
-/* Navbar links on mouse-over */
-.topnav a:hover {
-  background-color: var(--elem);
-  color:var(--text);
+/*  input navbar */
+input[type=text],
+input[type=password] {
+  height: 1.5rem;
+  text-align: center;
+  border-radius: 3px;
+  border: solid 1px var(--dailyChange);
+  
+  transition: border 0.1s ease-in, filter 0.2s ease-out;
 }
 
-/* Active/current link */
-.topnav a.active {
-  background-color:var(--elem);
-  color: white;
+input[type=text]:hover,
+input[type=password]:hover {
+  filter: drop-shadow(0px 0px 1px var(--border));
 }
 
-
-/* Style the input field inside the navbar */
-.topnav input[type=text], input[type=password] {
-  border-radius: 0.5vw;
-  font-size: 1vw;
-  border: solid 0.1vw var(--border);
-  width: 25%; 
+input[type=text]:focus,
+input[type=password]:focus {
+  outline: none !important;
+  border: solid 1px var(--border);
 }
 
-/* Style the button inside the input container */
-.topnav .login-container button {
-  max-width:11vw;
-  min-width:9vw;
-  border-radius:0.5vw;
+/* button */
+button {
+  height: 1.7rem;
+  font-size: 21px;
+  min-width: 120px;
+  border-radius: 3px;
   background: var(--button);
   color: var(--text);
-  font-size: 1vw;
   border: none;
   cursor: pointer;
+  transition: color 0.3s ease-in, background 0.3s ease;
 }
 
-.topnav .login-container button:hover {
-  color:var(--text2);
-  background: var(--buttonHover2);
+button:hover {
+  background: var(--text);
+  color: var(--button);
 }
 
-.input {
-  display:flex;
-  height:2vw;
-  margin-top:1.8%;
-  justify-content: space-evenly;
+button:active {
+  color: var(--text2);
+  background: var(--footer);
 }
-
 
 .disconnect {
-  height: 1.7vw;
-  margin-left: -8%;
+  margin-left: -92%;
+  min-width: 140px;
 }
 
 
-.Disabled{
-  pointer-events: none;
-  cursor: not-allowed;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  box-shadow: none;
+
+/* Modal background */
+.modal {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: var(--elemBackground);
+  border: 1px solid var(--text);
+  border-radius: 8px;
+  width: 420px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.close {
+  display: flex;
+  margin:5px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.modalInputContainer {
+  margin-right: 37px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.svg {
+  fill: var(--text);
+}
+
+.modalRegister { 
+  margin-top:20px;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.3s;
+  animation: animatezoom 0.3s
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0)
+  }
+
+  to {
+    -webkit-transform: scale(1)
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+
+/* on small screen */
+@media (max-width: 820px) {
+  .topnav {
+    flex-direction: column;
+  }
+
+  .title {
+    margin-top: 2%;
+    margin-right: auto;
+  }
+
+  .topnav-2 {
+    flex-direction: column;
+    gap: 7px;
+    margin: unset;
+  }
+
+  .disconnect {
+    margin-left: 0%;
+    margin-bottom: 10%;
+  }
+
+  .buttonWrapper {
+    margin-left: 0%;
+    margin-bottom: 1%;
+  }
+
+  .inputWrapper {
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width:350px) {
+
+  .inputWrapper {
+    flex-direction: column;
+  }
+
+  .buttonWrapper {
+    flex-direction: column;
+  }
 }

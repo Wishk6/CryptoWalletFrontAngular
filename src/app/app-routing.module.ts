@@ -11,7 +11,8 @@ const routes: Routes = [{
 
 {
   path: 'data',
-  component: DataViewComponent
+  component: DataViewComponent,
+//  data:{requiresLogin:true}
 }
 ];
 

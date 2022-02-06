@@ -1,8 +1,6 @@
-<div>
-    <div class="btnComponentWrapper">
-        <button (click)="showSumInHeader()" class="button-36">
-            <span class="bn31span">{{waitingFunc() }}</span>
-        </button>
-        <div [ngClass]="updated == false ? 'sumAppear' : 'sumDisappear'"> {{ newSum !='0' ? newSum : ' '}}</div>
-    </div>
+<div class="buttonWrapper">
+    <button class="totalButton" (click)="showSumInHeader()">
+        <span>{{waitingFunc() }}</span>
+    </button>
+    <div [ngClass]="!updated ? 'sumAppear' : 'sumDisappear'"> {{ newSum !='0' ? newSum : ' '}}</div>
 </div>

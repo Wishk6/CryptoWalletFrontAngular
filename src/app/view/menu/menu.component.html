@@ -1,9 +1,48 @@
-<app-header>
+<app-header #header (connectionEvent)="updateUserConnected($event)">
 </app-header>
 
+
 <div class="subHeader">
-    <app-themeswitch>
-    </app-themeswitch>
+    <div class="informationWrapper">
+
+        <form class="svgWrapper" (click)="toggleInfoBubble(infoText)">
+
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px"
+                height="30px" viewBox="0 0 24 24" version="1.1">
+                <title>Information</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <rect x="0" y="0" width="24" height="24" />
+                    <circle class="svg" fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                    <rect class="svg" x="11" y="10" width="2" height="7" rx="1" />
+                    <rect class="svg" x="11" y="7" width="2" height="2" rx="1" />
+                </g>
+            </svg>
+
+        </form>
+
+        <p #infoText  class="informationTextHidden">
+            This application is an online Wallet
+            <br>
+            where you can organize your wallet
+            <br>
+            and
+            <br>
+            calculate your total PNL
+            <br>
+            <span *ngIf="!connect" class="createAccount" (click)="header.openModal()"><br>Create an account now !</span> 
+        </p>
+
+    </div>
+
+
+    <div>
+        <app-theme-switch>
+        </app-theme-switch>
+    </div>
 </div>
 
-<app-select-crypto></app-select-crypto>
+<app-graphic>
+</app-graphic>
+
+<app-footer>
+</app-footer>

@@ -1,11 +1,16 @@
-<app-header>
+<app-header (connectionEvent)="updateUserConnected($event)">
 </app-header>
+<span *ngIf="connected">
+    <div class="subHeader">
+        <app-theme-switch>
+        </app-theme-switch>
+    </div>
 
-<div class="subHeader">
-    <app-themeswitch>
-    </app-themeswitch>
-</div>
+    <app-data-grid>
+    </app-data-grid>
 
+  
 
-
-<app-data-grid></app-data-grid>
+    <app-footer>
+    </app-footer>
+</span>
